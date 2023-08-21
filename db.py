@@ -15,10 +15,10 @@ dlt_col  = db["Auto-Delete"]
 del_col = db['delete-msg']
 
   
-async def add_group(group_id, group_name, user_name, user_id, channels, f_sub, verified,plan):
+async def add_group(group_id, group_name, user_name, user_id, channels, f_sub, verified,plan,auto_del):
     data = {"_id": group_id, "name":group_name, 
             "user_id":user_id, "user_name":user_name,
-            "channels":channels, "f_sub":f_sub, "verified":verified,"plan":plan}
+            "channels":channels, "f_sub":f_sub, "verified":verified,"plan":plan,"auto_del": auto_del}
     try:
        await grp_col.insert_one(data)
     except DuplicateKeyError:
@@ -33,8 +33,8 @@ async def delete_group(id):
     data = {"_id":id}
     await grp_col.delete_one(data)
 
-async def check_plan(id):
-    data = {"user_id": id}
+async def check_plan(chat_id):
+    data = {"_id": chat_id}
     group = await grp_col.find_one(data)
     return dict(group)
     

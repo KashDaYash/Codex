@@ -30,7 +30,7 @@ Auto_delete : use /Auto_delete command to enable or disable
 
 PLAN_USD = '''These are the prices in USD:\n\n`2.5 USD` - per Month\n`8 USD` - per 6 Months\n`15 USD` - per Year\n\nClick on the Buy button to contact the owner'''
     
-PLAN_INR = '''**These are the prices in INR:**\n\n`200 INR` - per Month\n`600 INR` -  per 6 Months\n`1200 INR` -  per Year\n\nClick on the `Buy` button to contact the owner'''
+PLAN_INR = '''**These are the prices in INR:**\n\n`100 INR` - per Month\n`400 INR` -  per 6 Months\n`800 INR` -  per Year\n\nClick on the `Buy` button to contact the owner'''
 BUTTON = InlineKeyboardMarkup([[
   InlineKeyboardButton(text="Buy",url=f"t.me/{OWNER}"),
   InlineKeyboardButton(text="INR PRICE",callback_data="inr_p")

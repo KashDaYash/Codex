@@ -17,7 +17,7 @@ async def new_group(bot:Client, message):
                        user_id=message.from_user.id, 
                        channels=[],
                        f_sub=False,
-                       verified=False,plan="")
+                       verified=False,plan="",auto_del=False)
        m=await message.reply(f"Thanks for adding me in {message.chat.title} ✨")
        num_of_members = await bot.get_chat_members_count(message.chat.id) # get the number of members in the group
        text=f"#NewGroup\n\nGroup: {message.chat.title}\nGroupID: `{message.chat.id}`\nAddedBy: {message.from_user.mention}\nUserID: `{message.from_user.id}`\nNumber of Members: {num_of_members}"

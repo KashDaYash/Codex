@@ -10,11 +10,11 @@ from pyrogram.types import *
 async def info_handle(_, m):
   chat_id = m.chat.id
   id = m.from_user.id 
-  dexa = await check_plan(id)
+  dexa = await check_plan(chat_id)
   plan = dexa["plan"]
   name = m.from_user.mention
   if plan != "":
-    await m.reply(f"Hey {name} Your Plan Validity {plan}")
+    await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
   else:
     await m.reply(f"Hey {name} You Didn't Purchase Any Plan")
   
@@ -29,7 +29,7 @@ async def leave_a_chat(bot, message):
         chat = chat
     try:
         buttons = [[
-            InlineKeyboardButton('𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f'https://t.me/YaaraOP')
+            InlineKeyboardButton('𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url=f'https://t.me/{OWNER}')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
