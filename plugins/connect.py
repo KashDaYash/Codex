@@ -19,7 +19,9 @@ async def connect(bot:Client, message):
     if message.from_user.id!=user_id:
        return await m.edit(f"Only @{user_name} can use this command 😁")
     if bool(verified)==False:
-       return await m.edit(f"Hey {message.from_user.mention} You Didn't Purchase Any Plan !\n Contact To My Owner @{OWNER}")    
+        BUTTON = InlineKeyboardMarkup([[
+            InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
+        return await m.edit(f"Hey {message.from_user.mention} You Didn't Purchase Any Plan !\n Contact To My Owner @{OWNER}",reply_markup=BUTTON)    
     try:
        channel = int(message.command[-1])
        if channel in channels:
@@ -61,7 +63,7 @@ async def disconnect(bot:Client, message):
     if bool(verified)==False:
         BUTTON = InlineKeyboardMarkup([[
             InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
-       return await m.edit(f"Hey {message.from_user.mention} You Didn't Purchase Any Plan !\n Contact To My Owner @{OWNER}",reply_markup =BUTTON )    
+       return await m.edit(f"Hey {message.from_user.mention} You Didn't Purchase Any Plan !\n Contact To My Owner @{OWNER}",reply_markup=BUTTON)    
     try:
        channel = int(message.command[-1])
        if channel not in channels:
