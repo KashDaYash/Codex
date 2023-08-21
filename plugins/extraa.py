@@ -16,7 +16,9 @@ async def info_handle(_, m):
   if plan != "":
     await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
   else:
-    await m.reply(f"Hey {name} You Didn't Purchase Any Plan")
+    BUTTON = InlineKeyboardMarkup([[
+            InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
+    await m.reply(f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
   
 @Client.on_message(filters.command('leave') & filters.private &  filters.chat(OWNER_ID))
 async def leave_a_chat(bot, message):
