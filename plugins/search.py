@@ -61,7 +61,6 @@ async def search(bot, message):
                     unique_results.add(result_entry)
                     results += result_entry
                     
-                    
   if results:
           end = time.time()
           omk = end - star
