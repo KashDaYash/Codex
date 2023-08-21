@@ -59,11 +59,11 @@ async def search(bot, message):
                         break
                         
                     unique_results.add(result_entry)
-                    results += result_entry
-
+                    
                     if len(results) > MESSAGE_LENGTH:
                         await message.reply(f"{results}", disable_web_page_preview=True)
                         results = ""
+                    results += result_entry
   if results:
           end = time.time()
           omk = end - star
