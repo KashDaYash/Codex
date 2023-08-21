@@ -1,5 +1,4 @@
-from bot import Client, YaaraOP
-from db import *
+from bot import Client, YaaraOPfrom db import *
 from config import *
 from pyrogram import *
 from pyrogram.types import *
@@ -63,7 +62,7 @@ async def disconnect(bot:Client, message):
     if bool(verified)==False:
         BUTTON = InlineKeyboardMarkup([[
             InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
-       return await m.edit(f"Hey {message.from_user.mention} You Didn't Purchase Any Plan !\n Contact To My Owner @{OWNER}",reply_markup=BUTTON)    
+        return await m.edit(f"Hey {message.from_user.mention} You Didn't Purchase Any Plan !\n Contact To My Owner @{OWNER}",reply_markup=BUTTON)    
     try:
        channel = int(message.command[-1])
        if channel not in channels:
