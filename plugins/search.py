@@ -10,6 +10,8 @@ import time
 import urllib.parse
 
 MESSAGE_LENGTH = 4096
+max_unique_results = 6
+unique_results = set()
 
 ignore_words = ["in", "and", "hindi", "movie", "tamil", "telugu", "dub", "hd", "man", "series", "full", "dubbed", "kannada", "season", "part", "all", "2022", "2021", "2023", "1", "2", "3", "4", "5", "6", "7" ,"8", "9", "0", "2020", "2019", "2018" , "2017", "2016", "2014", "all", "new", "2013", "()", "movies", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "1999", "1998", "1997", "1996", "1995", "-+:;!?*", "language", "480p", "720p", "1080p", "south", "Hollywood", "bollywood", "tollywood",] # words to ignore in search query
 
@@ -48,15 +50,19 @@ async def search(bot, message):
       for word in query_words:
           async for msg in YaaraOP.search_messages(int(chk), query=word, limit=10):
               if msg.caption or msg.text:
-                  name = (msg.text or msg.caption).split("\n")[0]
-                  if name in results:
-                      continue
-                  new_results = f"{name}\n {msg.link}\n\n"
-                  if len(results) + len(new_results) > MESSAGE_LENGTH:
-                      await message.reply(f"{results}", disable_web_page_preview=True)
-                      results = ""
-                  results += new_results
-    
+                name = (msg.text or msg.caption).split("\n")[0]
+                result_entry = f"{name}\n {msg.link}\n\n"
+                
+                if result_entry not in unique_results:
+                    if len(unique_results) >= max_unique_results:
+                        break
+                        
+                    unique_results.add(result_entry)
+                    results += result_entry
+
+                    if len(results) > MESSAGE_LENGTH:
+                        await message.reply(f"{results}", disable_web_page_preview=True)
+                        results = ""
   if results:
           end = time.time()
           omk = end - star
