@@ -6,7 +6,7 @@ from bot import dbot
 import time 
 from datetime import datetime 
 
-plan = ""
+PLAN = ""
 
 async def check_up(bot):   
     _time = int(time.time()) 
@@ -40,7 +40,7 @@ async def plan_update():
       try:
         chat_id = data["_id"]
         user_id = data["user_id"]
-        plan = data["plan"]
+        plan = PLAN
         await update_group(id=chat_id, new_data={"verified": False, "plan": plan})
         msg = await dbot.send_message(chat_id, f"Your Plan Expired Today Now Contact To My Owner @{OWNER}")
         await dbot.pin_chat_message(
