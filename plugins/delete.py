@@ -7,12 +7,15 @@ import time
 from datetime import datetime 
 
 plan = ""
+
 async def check_up(bot):   
     _time = int(time.time()) 
     all_data = await get_all_dlt_data(_time)
     for data in all_data:
+      del_mode = data["auto_del"]
+      if del_mode == True:
         try:
-           await bot.delete_messages(chat_id=data["chat_id"],
+          await bot.delete_messages(chat_id=data["chat_id"],
                                      message_ids=data["message_id"])           
         except Exception as e:
            err=data

@@ -10,8 +10,6 @@ import time
 import urllib.parse
 
 MESSAGE_LENGTH = 4096
-max_unique_results = 6
-unique_results = set()
 
 ignore_words = ["in", "and", "hindi", "movie", "tamil", "telugu", "dub", "hd", "man", "series", "full", "dubbed", "kannada", "season", "part", "all", "2022", "2021", "2023", "1", "2", "3", "4", "5", "6", "7" ,"8", "9", "0", "2020", "2019", "2018" , "2017", "2016", "2014", "all", "new", "2013", "()", "movies", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "1999", "1998", "1997", "1996", "1995", "-+:;!?*", "language", "480p", "720p", "1080p", "south", "Hollywood", "bollywood", "tollywood",] # words to ignore in search query
 
@@ -45,7 +43,8 @@ async def search(bot, message):
       return
   query = await clean_query(message.text)
   query_words = query.split()
-
+  max_unique_results = 8
+  unique_results = 0
   results = ""
   for chk in channels:
       for word in query_words:
@@ -53,11 +52,12 @@ async def search(bot, message):
               if msg.caption or msg.text:
                 name = (msg.text or msg.caption).split("\n")[0]
                 result_entry = f"{name}\n {msg.link}\n\n"
+                if unique_results == max_unique_results:
+                  break
+                else result_entry == "": 
+                  unique_results +=1
+                  results += result_entry
                 
-                if result_entry not in unique_results:
-                    if len(unique_results) >= max_unique_results:
-                        break
-                    results += result_entry
                     
   if results:
           end = time.time()

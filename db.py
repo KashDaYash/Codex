@@ -12,7 +12,7 @@ db       = dbclient["Filter-Bot"]
 grp_col  = db["GROUPS"]
 user_col = db["USERS"]
 dlt_col  = db["Auto-Delete"]
-del_col = db['delete-msg']
+
 
   
 async def add_group(group_id, group_name, user_name, user_id, channels, f_sub, verified,plan,auto_del):

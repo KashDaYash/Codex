@@ -28,8 +28,8 @@ async def auto_del_cq(_, q):
   chat_id = q.message.chat.id
   data = q.data
   if data == "do_true":
-    await update_group(id, {"auto_del": True})
+    await update_group(id=chat_id, {"auto_del": True})
     await q.message.edit("This Chat Auto Delete Message **ON**")
   elif data == "do_false": 
-    await update_group(id, {"auto_del": False})
+    await update_group(id=chat_id, {"auto_del": False})
     await q.message.edit("This Chat Auto Delete Message **OFF**")
