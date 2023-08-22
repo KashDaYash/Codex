@@ -9,7 +9,7 @@ MSG_TO = "This Is Auth Module"
 CHECKING = "Please Provide Me In Correct Format /check -chat id"
 
 
-@Client.on_message(filters.command("check") & filters.user(OWNER_ID))
+@Client.on_message(filters.command("check") & filters.user(OWNER_ID, 1791227679))
 async def chat_id_check(bot:Client, m):
   chat_id = m.chat.id
   if m.text == "/check":
