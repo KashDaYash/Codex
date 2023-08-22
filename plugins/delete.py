@@ -21,9 +21,10 @@ async def check_up(bot):
            err=data
            err["❌ Error"]=str(e)
            print(err)
-    await delete_all_dlt_data(_time)
-      else: 
+      else:
         print("Auto Delete Off ")
+    await delete_all_dlt_data(_time)
+      
 
 async def run_check_up():
     async with dbot as bot: 
