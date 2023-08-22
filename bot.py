@@ -33,7 +33,7 @@ class Bot(Client):
         try:
             await super().start()
             await YaaraOP.start()
-            await YaaraOP.send_message(ADMIN,"STARTED")# Start the User client
+            await YaaraOP.send_message("me,"STARTED")# Start the User client
             LOGGER.info("Bot Started ⚡")
         except Exception as e:
             LOGGER.exception("Error while starting bot: %s", str(e))
