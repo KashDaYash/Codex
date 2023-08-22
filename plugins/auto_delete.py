@@ -4,7 +4,15 @@ from config import *
 from pyrogram import *
 from pyrogram.types import *
 
-t_text = "This Time Auto-Delete Is **OFF** Click On Button And Set **ON**"
+
+@Client.on_message(filters.command("autodel") & filters.group)
+async def auto_del_handler(_, m):
+  chat_id = m.chat.id
+  group = await get_group(chat_id)
+  user_id = group['user_id']
+  auto_dele = group['auto_del']
+  if m.from_user.id == user_id:
+    t_text = "This Time Auto-Delete Is **OFF** Click On Button And Set **ON**"
 f_text = "This Time Auto-Delete Is **ON** Click On Button And Set **OFF**"
 
 T_BUTTON = InlineKeyboardMarkup([[
@@ -13,13 +21,6 @@ T_BUTTON = InlineKeyboardMarkup([[
 F_BUTTON = InlineKeyboardMarkup([[
   InlineKeyboardButton("OFF",callback_data =f"do_false:{user_id}")
   ]])
-@Client.on_message(filters.command("autodel") & filters.group)
-async def auto_del_handler(_, m):
-  chat_id = m.chat.id
-  group = await get_group(chat_id)
-  user_id = group['user_id']
-  auto_dele = group['auto_del']
-  if m.from_user.id == user_id:
     if auto_dele == False:
       await m.reply(t_text,reply_markup=T_BUTTON)
     elif auto_dele == True:
