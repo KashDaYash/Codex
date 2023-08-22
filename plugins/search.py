@@ -54,7 +54,7 @@ async def search(bot, message):
                 result_entry = f"{name}\n {msg.link}\n\n"
                 if unique_results == max_unique_results:
                   break
-                else name != "": 
+                else: 
                   unique_results +=1
                   results += result_entry
                 
