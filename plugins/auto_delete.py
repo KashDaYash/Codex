@@ -28,7 +28,7 @@ async def auto_del_handler(_, m):
     
 @Client.on_callback_query()
 async def auto_del_cq(_, q):
-  id = q.data.split(":",1)[1]
+  id = q.message.chat.id 
   user = q.message.from_user.id
   data = q.data.split(":",1)[0]
   if data == "do_true":

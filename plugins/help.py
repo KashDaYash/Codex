@@ -33,11 +33,11 @@ PLAN_USD = '''These are the prices in USD:\n\n`1.5 USD` - per Month\n`5 USD` - p
 PLAN_INR = '''**These are the prices in INR:**\n\n`100 INR` - per Month\n`400 INR` -  per 6 Months\n`800 INR` -  per Year\n\nClick on the `Buy` button to contact the owner'''
 BUTTON = InlineKeyboardMarkup([[
   InlineKeyboardButton(text="Buy",url=f"t.me/{OWNER}"),
-  InlineKeyboardButton(text="INR PRICE",callback_data="inr_p")
+  InlineKeyboardButton(text="INR PRICE",callback_data="inr_pp")
   ]])
 BTN = InlineKeyboardMarkup([[
   InlineKeyboardButton(text="Buy",url=f"t.me/{OWNER}"),
-  InlineKeyboardButton(text="USD PRICE",callback_data="usd_p")
+  InlineKeyboardButton(text="USD PRICE",callback_data="usd_pp")
   ]])
   
 @Client.on_message(filters.command("help"))
@@ -53,9 +53,9 @@ async def buy_handle(_ ,m):
 @Client.on_callback_query()
 async def cb_help(_, q):
   data = q.data
-  if data == "inr_p": 
+  if data == "inr_pp": 
     await q.message.edit(PLAN_INR,reply_markup=BTN)
-  elif data == "usd_p": 
+  elif data == "usd_pp": 
     await q.message.edit(PLAN_USD,reply_markup=BUTTON)
     
 @Client.on_message(filters.command("id"))
