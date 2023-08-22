@@ -13,7 +13,9 @@ async def check_up(bot):
     all_data = await get_all_dlt_data(_time)
     for data in all_data:
       del_mode = data["auto_del"]
-      if del_mode == True:
+      if del_mode == False:
+        print("delete auto mode off")
+      else:
         try:
           await bot.delete_messages(chat_id=data["chat_id"],
                                      message_ids=data["message_id"])           
