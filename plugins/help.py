@@ -60,7 +60,7 @@ async def cb_help(_, q):
   ]])
   if data == "inr_p": 
     await q.message.edit(PLAN_INR,reply_markup=BTN_2)
-  elif data == "usd_p": 
+  if data == "usd_p": 
     await q.message.edit(PLAN_USD,reply_markup=BTN_1)
     
 @Client.on_message(filters.command("id"))
