@@ -40,7 +40,7 @@ async def plan_update():
         await dbot.pin_chat_message(
     chat_id,
     message_id=msg.id)
-    await delete_expiry(id=chat_id)
+        await delete_expiry(id=chat_id)
       except Exception as e:
         await dbot.send_message(OWNER,e)
     
