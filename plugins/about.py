@@ -1,8 +1,6 @@
 from bot import Client
-from db import *
-from config import *
-from pyrogram import *
-from pyrogram.types import *
+from config import OWNER 
+from pyrogram import filters 
 
 TEXT = f'''This bot is made by @{OWNER}A full time python developer
 
