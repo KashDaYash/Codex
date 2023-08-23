@@ -12,8 +12,23 @@ db       = dbclient["Filter-Bot"]
 grp_col  = db["GROUPS"]
 user_col = db["USERS"]
 dlt_col  = db["Auto-Delete"]
+plan_col = db["Subscription"]
 
 
+  
+async def plan_expiry(id, val): 
+  data = {"_id": id, "expiry": val}
+  try:
+    await plan_col.insert_one(data)
+  except DuplicateKeyError:
+    pass
+async def check_expiry(timestamp):
+  data = {"expiry": timestamp}
+  group = await plan_col.find_one(data)
+    return dict(group)
+async def delete_expiry(id):
+    data = {"_id":id}
+    await plan_col.delete_one(data) 
   
 async def add_group(group_id, group_name, user_name, user_id, channels, f_sub, verified,plan,auto_del):
     data = {"_id": group_id, "name":group_name, 
@@ -38,10 +53,6 @@ async def check_plan(chat_id):
     group = await grp_col.find_one(data)
     return dict(group)
     
-async def see_plan(timestamp):
-  data = {"plan": timestamp}
-  group = await grp_col.find_one(data)
-  return dict(group)
     
 async def get_group(id):
     data = {'_id':id}

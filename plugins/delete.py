@@ -6,7 +6,6 @@ from bot import dbot
 import time 
 from datetime import datetime 
 
-PLAN = ""
 
 async def check_up(bot):   
     _time = int(time.time()) 
@@ -30,19 +29,18 @@ async def run_check_up():
 
 async def plan_update():
   while True:
-    current_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
-    timestamp = current_date.strftime("%Y-%m-%d")
-    info_data = await see_plan(timestamp)
+    current_date = datetime.now()
+    timestamp = current_date.strftime("%Y%m%d")
+    info_data = await check_expiry(timestamp)
     for data in info_data: 
       try:
         chat_id = data["_id"]
-        user_id = data["user_id"]
-        await update_group(id=chat_id, new_data={"verified": False, "plan": PLAN})
+        await update_group(id=chat_id, new_data={"verified": False, "plan": ""})
         msg = await dbot.send_message(chat_id, f"Your Plan Expired Today Now Contact To My Owner @{OWNER}")
         await dbot.pin_chat_message(
     chat_id,
-    message_id=msg.id
-)
+    message_id=msg.id)
+    await delete_expiry(id=chat_id)
       except Exception as e:
         await dbot.send_message(OWNER,e)
     

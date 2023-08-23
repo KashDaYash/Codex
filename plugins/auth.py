@@ -38,6 +38,8 @@ async def auth_handle(bot:Client, m):
     ok = current_date + timedelta(days=end_time)
     timestamp = ok.strftime("%Y-%m-%d")
     await update_group(id, {"verified": True, "plan": timestamp})
+    bimsi = int(ok.strftime("%Y%m%d"))
+    await plan_expiry(id,bimsi)
     await m.reply(f"user id: {user_id}\n username: @{user_name} group chat is verified!")
     await bot.send_message(chat_id, f"hey @{user_name} Purchase A Plan For {end_time}days ")
   else:
