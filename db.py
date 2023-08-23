@@ -25,7 +25,7 @@ async def plan_expiry(id, val):
 async def check_expiry(timestamp):
   data = {"expiry": timestamp}
   group = await plan_col.find_one(data)
-    return dict(group)
+  return dict(group)
 async def delete_expiry(id):
     data = {"_id":id}
     await plan_col.delete_one(data) 
