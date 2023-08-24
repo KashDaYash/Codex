@@ -27,15 +27,16 @@ async def check_plan(bot):
             all_data = await get_plan_data(_time)
             for data in all_data:
               try:
-                id = data['_id']
-                user = data['user_name']
-                await update_group(id, {"verified": False, "plan": ""})
-                x = await bot.send_message(chat_id=id, text=f"Hey @{user} Your Plan Expired Today", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Buy", url=f"t.me/{OWNER}")]]))
-
-                await bot.pin_chat_message(chat_id=id, message_id=x.id)
-              except Exception as e: 
-                await bot.send_message(OWNER_ID, f"Got error in Related Subscription Expired {e}\nUser : {data['user_name']}\nUser ID : {data['user_id']}\nChat ID :{data['_id']}\n")
-                asyncio.sleep(10800)
+                if data['plan'] != "":
+                  id = data['_id']
+                  user = data['user_name']
+                  await update_group(id, {"verified": False, "plan": ""})
+                  x = await bot.send_message(chat_id=id, text=f"Hey @{user} Your Plan Expired Today", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Buy", url=f"t.me/{OWNER}")]]))
+                  await bot.pin_chat_message(chat_id=id, message_id=x.id)
+              except Exception as e:
+                if data['plan'] != "": 
+                  await bot.send_message(OWNER_ID, f"Got error in Related Subscription Expired {e}\nUser : {data['user_name']}\nUser ID : {data['user_id']}\nChat ID :{data['_id']}\n")
+                  asyncio.sleep(10800)
     
 async def run_check_up():
     async with dbot as bot: 
