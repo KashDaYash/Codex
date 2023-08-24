@@ -30,7 +30,8 @@ async def check_plan(bot):
                 id = data['_id']
                 user = data['user_name']
                 await update_plan(id, {"verified": False, "plan": ""})
-                x = await bot.send_message(chat_id=id,f"Hey @{user} You Plan Expired Today",reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Buy",url=f"t.me/{OWNER}")]]))
+                x = await bot.send_message(chat_id=id, text=f"Hey @{user} Your Plan Expired Today", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Buy", url=f"t.me/{OWNER}")]]))
+
                 await bot.pin_chat_message(chat_id=id, message_id=x.id)
               except Exception as e: 
                 await bot.send_message(OWNER_ID, f"Got error in Related Subscription Expired {e}\nUser : {data['user_name']}\nUser ID : {data['user_id']}\nChat ID :{data['_id']}\n")
