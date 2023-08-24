@@ -1,5 +1,5 @@
 from config import * 
-from bot import Client, dbot as bot
+from bot import Client
 from pyrogram import filters 
 from pyrogram.types import *
 from db import *
@@ -36,13 +36,13 @@ async def cb_help(_, q):
   InlineKeyboardButton(text="USD PRICE",callback_data="usd_p")
   ]])
   if data == "inr_pp": 
-    await q.message.edit(PLAN_INR,reply_markup=BTN_2)
+    await q.message.reply(PLAN_INR,reply_markup=BTN_2)
   elif data == "usd_pp": 
-    await q.message.edit(PLAN_USD,reply_markup=BTN_1)
+    await q.message.reply(PLAN_USD,reply_markup=BTN_1)
   elif data == "inr_p": 
-    await q.message.edit(PLAN_INR,reply_markup=BTN_2)
+    await q.message.reply(PLAN_INR,reply_markup=BTN_2)
   elif data == "usd_p": 
-    await q.message.edit(PLAN_USD,reply_markup=BTN_2)
+    await q.message.reply(PLAN_USD,reply_markup=BTN_2)
     
 @Client.on_message(filters.command("id"))
 async def id_handle(_, m):
