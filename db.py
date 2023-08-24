@@ -20,11 +20,6 @@ async def get_plan_data(_time):
   cursor = grp_col.find(data)
   all_data = await cursor.to_list(length=int(count))
   return all_data
-    
-async def update_plan(id, new_data):
-    data = {"plan": _time}
-    new_value = {"$set": new_data}
-    await grp_col.update_many(data, new_value)
   
 async def add_group(group_id, group_name, user_name, user_id, channels, f_sub, verified,plan,auto_del):
     data = {"_id": group_id, "name":group_name, 

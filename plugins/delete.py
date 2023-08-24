@@ -29,7 +29,7 @@ async def check_plan(bot):
               try:
                 id = data['_id']
                 user = data['user_name']
-                await update_plan(id, {"verified": False, "plan": ""})
+                await update_group(id, {"verified": False, "plan": ""})
                 x = await bot.send_message(chat_id=id, text=f"Hey @{user} Your Plan Expired Today", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Buy", url=f"t.me/{OWNER}")]]))
 
                 await bot.pin_chat_message(chat_id=id, message_id=x.id)
