@@ -43,7 +43,8 @@ async def search(bot, message):
   query = await clean_query(message.text)
   query_words = query.split()
   max_unique_results = 8
-  unique_results = 0
+  unique_results = set()
+  
   results = ""
   for chk in channels:
       for word in query_words:
@@ -51,11 +52,11 @@ async def search(bot, message):
               if msg.caption or msg.text:
                 name = (msg.text or msg.caption).split("\n")[0]
                 result_entry = f"{name}\n {msg.link}\n\n"
-                if unique_results == max_unique_results:
-                  break
-                else: 
-                  unique_results +=1
-                  results += result_entry
+                  if not result_entry in unique_results: 
+                    if len(unique_results) >= max_unique_results:
+                        break
+                  else: 
+                    results += result_entry
                 
                     
   if results:
