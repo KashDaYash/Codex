@@ -36,13 +36,13 @@ async def cb_help(_, q):
   InlineKeyboardButton(text="USD PRICE",callback_data="usd_p")
   ]])
   if data == "inr_pp": 
-    await q.message.reply(PLAN_INR,reply_markup=BTN_2)
+    await q.message.edit_message_reply_markup(PLAN_INR,reply_markup=BTN_2)
   elif data == "usd_pp": 
-    await q.message.reply(PLAN_USD,reply_markup=BTN_1)
+    await q.message.edit_message_reply_markup(PLAN_USD,reply_markup=BTN_1)
   elif data == "inr_p": 
-    await q.message.reply(PLAN_INR,reply_markup=BTN_2)
+    await q.message.edit_message_reply_markup(PLAN_INR,reply_markup=BTN_2)
   elif data == "usd_p": 
-    await q.message.reply(PLAN_USD,reply_markup=BTN_2)
+    await q.message.edit_message_reply_markup(PLAN_USD,reply_markup=BTN_2)
     
 @Client.on_message(filters.command("id"))
 async def id_handle(_, m):
