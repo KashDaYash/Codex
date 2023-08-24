@@ -52,9 +52,9 @@ async def search(bot, message):
               if msg.caption or msg.text:
                 name = (msg.text or msg.caption).split("\n")[0]
                 result_entry = f"{name}\n {msg.link}\n\n"
-                  if not result_entry in unique_results: 
-                    if len(unique_results) >= max_unique_results:
-                        break
+                if not result_entry in unique_results: 
+                  if len(unique_results) >= max_unique_results:
+                    break
                   else: 
                     results += result_entry
                 
