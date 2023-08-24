@@ -1,7 +1,7 @@
 from config import * 
 from bot import Client, dbot as bot
 from pyrogram import filters 
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery 
+from pyrogram.types import *
 from db import *
 
 HELP_TEXT = f"😇How To use  m\npress /buy to purchase a subscription\nIndex a group with - /index \nEXAMPLE: /index -100xxxxxxxxxxx Add me in the channel. And make sure I have all the permissions!\n\nRemove a Channel with - /remove -100xxxxxxxxxxx\nthis will help you to remove a indexed channel from your group. Get indexed channels list with - /viewlist \nCheck your information with - /info\nGives your information and validity of your subscription\nGet ID of current chat - /id \nAuto delete : use /autodel command to enable or disable auto message delete system."
@@ -20,8 +20,8 @@ async def buy_handle(_ ,m):
   ]])
   await m.reply(text="All The Available Plans",reply_markup=BUTTON)
   
-@bot.on_callback_query()
-async def cb_help(_, q: CallbackQuery):
+@Client.on_callback_query()
+async def cb_help(_, q):
   data = q.data
   PLAN_USD = "These are the prices in USD:\n\n`1.5 USD` - per Month\n`5 USD` - per 6 Months\n8 USD` - per Year\n\nClick on the Buy button to contact the owner"
     
@@ -41,8 +41,8 @@ async def cb_help(_, q: CallbackQuery):
     await q.message.edit(PLAN_USD,reply_markup=BTN_1)
   elif data == "inr_p": 
     await q.message.edit(PLAN_INR,reply_markup=BTN_2)
-  elif data == "inr_p": 
-    await q.message.edit(PLAN_INR,reply_markup=BTN_2)
+  elif data == "usd_p": 
+    await q.message.edit(PLAN_USD,reply_markup=BTN_2)
     
 @Client.on_message(filters.command("id"))
 async def id_handle(_, m):
