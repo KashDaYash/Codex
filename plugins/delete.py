@@ -1,6 +1,6 @@
 import asyncio
 from db import *
-from config import OWNER
+from config import OWNER, OWNER_ID
 from time import time
 from bot import dbot
 import time 
