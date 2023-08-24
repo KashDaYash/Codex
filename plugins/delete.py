@@ -35,6 +35,7 @@ async def check_plan(bot):
                 await bot.pin_chat_message(chat_id=id, message_id=x.id)
               except Exception as e: 
                 await bot.send_message(OWNER_ID, f"Got error in Related Subscription Expired {e}\nUser : {data['user_name']}\nUser ID : {data['user_id']}\nChat ID :{data['_id']}\n")
+                asyncio.sleep(10800)
     
 async def run_check_up():
     async with dbot as bot: 
