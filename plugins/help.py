@@ -21,7 +21,7 @@ async def buy_handle(_ ,m):
   await m.reply(text="All The Available Plans",reply_markup=BUTTON)
   
 @Client.on_callback_query()
-async def cb_help(_, q):
+async def cb_help(_, q: CallbackQuery):
   data = q.data
   PLAN_USD = "These are the prices in USD:\n\n`1.5 USD` - per Month\n`5 USD` - per 6 Months\n8 USD` - per Year\n\nClick on the Buy button to contact the owner"
     
