@@ -4,7 +4,9 @@ from config import OWNER
 from time import time
 from bot import dbot
 import time 
-from datetime import datetime 
+from datetime import datetime
+from pyrogram import *
+from pyrogram.types import *
 
 
 async def check_up(bot):   
