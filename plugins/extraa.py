@@ -6,23 +6,20 @@ from pyrogram.types import *
 
 
 
-@Client.on_message(filters.command("info"))
-async def info_handle(_, message):
-  chat_id = message.chat.id
-  id = message.from_user.id
-  dexa = ""
-  if chat_id == id:
-    dexa += await check_plan(id)
-  else:
-    dexa += await get_group(chat_id)
+@Client.on_message(filters.command("info") & filters.group)
+async def info_handle(_, m):
+  chat_id = m.chat.id
+  id = m.from_user.id 
+  dexa = await check_plan(chat_id)
   plan = dexa["plan"]
-  name = message.from_user.mention
+  name = m.from_user.mention
   if plan != "":
-    await message.reply(f"Hey {name} This Chat Plan Validity {plan}")
+    await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
   else:
     BUTTON = InlineKeyboardMarkup([[
             InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
-    await message.reply(f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
+    await m.reply(text=f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
+  
   
 @Client.on_message(filters.command('leave') & filters.private &  filters.chat(OWNER_ID))
 async def leave_a_chat(bot, message):
