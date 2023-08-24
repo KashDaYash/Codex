@@ -48,8 +48,8 @@ async def delete_group(id):
     data = {"_id":id}
     await grp_col.delete_one(data)
 
-async def check_plan(chat_id):
-    data = {"_id": chat_id}
+async def check_plan(id):
+    data = {"user_id": chat_id}
     group = await grp_col.find_one(data)
     return dict(group)
     
