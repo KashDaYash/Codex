@@ -9,8 +9,12 @@ from pyrogram.types import *
 @Client.on_message(filters.command("info"))
 async def info_handle(_, m):
   chat_id = m.chat.id
-  id = m.from_user.id 
-  dexa = await get_group(chat_id) or await check_plan(id)
+  id = m.from_user.id
+  dexa = None
+  if chat_id == id:
+    dexa += await check_plan(id)
+  else:
+    dexa += await get_group(chat_id)
   plan = dexa["plan"]
   name = m.from_user.mention
   if plan != "":
