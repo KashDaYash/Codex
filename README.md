@@ -2,9 +2,12 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-VPS DEPLOY:/
+### VPS DEPLOY 
 
+```
 git clone https://github.com/KashDaYash/Codex.git
-cd Codex
+cd CyberUserBot
 pip install -r requirements.txt
 python3 main.py
+```
+
