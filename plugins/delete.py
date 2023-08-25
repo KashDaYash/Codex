@@ -24,8 +24,8 @@ async def check_up(bot):
    
 async def check_plan(bot):   
             _time = datetime.now().strftime("%Y-%m-%d")
-            data = await get_plan_data(_time)
-            if data and data['plan'] == _time:
+            all_data = await get_plan_data(_time)
+            for data in all_data:
               try:
                 id = data['_id']
                 user = data['user_name']
