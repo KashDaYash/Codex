@@ -30,10 +30,12 @@ async def auto_del_handler(_, m):
 async def auto_del_cq(_, q):
   id = q.message.chat.id 
   user = q.message.from_user.id
+  uid = q.from_user.id
   data = q.data.split(":",1)[0]
-  if data == "do_true":
-    await update_group(id, {"auto_del": True})
-    await q.message.edit("This Chat Auto Delete Message **ON**")
-  elif data == "do_false": 
-    await update_group(id, {"auto_del": False})
-    await q.message.edit("This Chat Auto Delete Message **OFF**")
+  if uid == user:
+    if data == "do_true":
+      await update_group(id, {"auto_del": True})
+      await q.message.edit("This Chat Auto Delete Message **ON**")
+    elif data == "do_false": 
+      await update_group(id, {"auto_del": False})
+      await q.message.edit("This Chat Auto Delete Message **OFF**")
