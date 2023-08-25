@@ -6,7 +6,7 @@
 
 ```
 git clone https://github.com/KashDaYash/Codex.git
-cd CyberUserBot
+cd Codex
 pip install -r requirements.txt
 python3 main.py
 ```
