@@ -43,7 +43,7 @@ async def search(bot, message):
   query = await clean_query(message.text)
   
   results = ""
-  async for chk in channels:
+  for chk in channels:
     async for msg in YaaraOP.search_messages(int(chk), query=query, limit=8):
       if msg.caption or msg.text:
         name = (msg.text or msg.caption).split("\n")[0]
