@@ -56,14 +56,15 @@ async def search(bot, message):
   
   if not results:
     for choo in channels:
-      async for msg in YaaraOP.search_messages(int(choo), query=quri, limit=8):
-        if msg.caption or msg.text:
-          name = (msg.text or msg.caption).split("\n")[0]
-          result_entry = f"{name}\n {msg.link}\n\n"
-          if len(result_entry) > MESSAGE_LENGTH:
-            await message.reply(f"{results}", disable_web_page_preview=True)
-            results = ""
-          results += result_entry              
+      for omki in quri:
+        async for msg in YaaraOP.search_messages(int(choo), query=omki, limit=8):
+          if msg.caption or msg.text:
+            name = (msg.text or msg.caption).split("\n")[0]
+            result_entry = f"{name}\n {msg.link}\n\n"
+            if len(result_entry) > MESSAGE_LENGTH:
+              await message.reply(f"{results}", disable_web_page_preview=True)
+              results = ""
+            results += result_entry              
                     
   if results:
           end = time.time()
