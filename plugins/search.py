@@ -42,7 +42,7 @@ async def search(bot, message):
       return
   query = await clean_query(message.text)
   
-  results = ""
+  results = None
   for chk in channels:
     async for msg in YaaraOP.search_messages(int(chk), query=query, limit=8):
       if msg.caption or msg.text:
@@ -52,7 +52,18 @@ async def search(bot, message):
           await message.reply(f"{results}", disable_web_page_preview=True)
           results = ""
         results += result_entry
-                
+  quri = query.split()
+  
+  if not results:
+    for choo in channels:
+      async for msg in YaaraOP.search_messages(int(choo), query=quri, limit=8):
+        if msg.caption or msg.text:
+          name = (msg.text or msg.caption).split("\n")[0]
+          result_entry = f"{name}\n {msg.link}\n\n"
+          if len(results) > MESSAGE_LENGTH:
+            await message.reply(f"{results}", disable_web_page_preview=True)
+            results = ""
+          results += result_entry              
                     
   if results:
           end = time.time()
