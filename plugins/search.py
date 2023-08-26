@@ -48,7 +48,7 @@ async def search(bot, message):
       if msg.caption or msg.text:
         name = (msg.text or msg.caption).split("\n")[0]
         result_entry = f"{name}\n {msg.link}\n\n"
-        if len(results) > MESSAGE_LENGTH:
+        if len(result_entry) > MESSAGE_LENGTH:
           await message.reply(f"{results}", disable_web_page_preview=True)
           results = ""
         results += result_entry
@@ -60,7 +60,7 @@ async def search(bot, message):
         if msg.caption or msg.text:
           name = (msg.text or msg.caption).split("\n")[0]
           result_entry = f"{name}\n {msg.link}\n\n"
-          if len(results) > MESSAGE_LENGTH:
+          if len(result_entry) > MESSAGE_LENGTH:
             await message.reply(f"{results}", disable_web_page_preview=True)
             results = ""
           results += result_entry              
