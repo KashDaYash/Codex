@@ -48,7 +48,7 @@ async def search(bot, message):
   results = ""
   for chk in channels:
       for word in query_words:
-          async for msg in YaaraOP.search_messages(int(chk), query=word, limit=10):
+          async for msg in YaaraOP.search_messages(int(chk), query=query, limit=10):
               if msg.caption or msg.text:
                 name = (msg.text or msg.caption).split("\n")[0]
                 result_entry = f"{name}\n {msg.link}\n\n"
