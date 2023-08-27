@@ -15,11 +15,7 @@ async def info_handle(_, m):
   if m.chat.type == enums.ChatType.GROUP:
     plan += await get_group(chat_id)
   if m.chat.type == enums.ChatType.PRIVATE:
-    if plan != "":
-      await m.reply(f"Your Subscription Validity {plan}")
-    else:
-      await m.reply("You Are A Normal User\If You want to purchase use /buy")
-    
+    await m.reply("You Are A Normal User\nIf You want to purchase use /buy")
   else:
     if plan != "":
       await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
