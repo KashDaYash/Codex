@@ -9,18 +9,17 @@ from pyrogram.types import *
 @Client.on_message(filters.command("info"))
 async def info_handle(_, m):
   chat_id = m.chat.id
-  id = m.from_user.id 
-  dexa = await get_group(chat_id)
-  plan = dexa["plan"]
-  if m.chat.type == enums.ChatType.PRIVATE: 
+  id = m.from_user.id
+  name = m.from_user.mention 
+  if m.chat.type == enums.ChatType.PRIVATE:
     await m.reply("You Are A Normal User")
-  name = m.from_user.mention
-  if plan != "":
-    await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
   else:
-    BUTTON = InlineKeyboardMarkup([[
+    if plan != "":
+      await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
+    else:
+      BUTTON = InlineKeyboardMarkup([[
             InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
-    await m.reply(text=f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
+      await m.reply(text=f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
   
   
 @Client.on_message(filters.command('leave') & filters.private &  filters.chat(OWNER_ID))
