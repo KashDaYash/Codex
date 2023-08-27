@@ -28,16 +28,17 @@ bot = Client("bot",
             bot_token=BOT_TOKEN,
             plugins={"root": "plugins"})
 
-try:
-  await bot.start()
-  await YaaraOP.start()
-  await YaaraOP.send_message("me","STARTED")# Start the User client
-  LOGGER.info("Bot Started ⚡")
-except Exception as e:
-  await bot.stop()
-  await YaaraOP.stop()
-  LOGGER.exception("Error while starting bot: %s", str(e))
+async def main():
+  try:
+    await bot.start()
+    await YaaraOP.start()
+    await YaaraOP.send_message("me","STARTED")# Start the User client
+    LOGGER.info("Bot Started ⚡")
+  except Exception as e:
+    await bot.stop()
+    await YaaraOP.stop()
+    LOGGER.exception("Error while starting bot: %s", str(e))
 
-
-bot.run_until_disconnected()
+loop = asyncio.get_running_loop()
+loop.run_until_complete(main())
 print("Bot Started 💥")
