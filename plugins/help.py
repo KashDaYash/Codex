@@ -1,4 +1,4 @@
-from bot import bot
+from bot import yk as bot
 from pyrogram import *
 from pyrogram.types import *
 

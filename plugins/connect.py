@@ -1,4 +1,4 @@
-from bot import bot, YaaraOP
+from bot import yk as bot, YaaraOP
 from db import *
 from config import *
 from pyrogram import *
