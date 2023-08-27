@@ -16,7 +16,7 @@ async def connect(bot, message):
        channels  = group["channels"].copy()
     except :
        return await bot.leave_chat(message.chat.id)  
-    if message.from_user.id!=user_id:
+    if message.from_user.id != user_id:
        return await m.edit(f"Only @{user_name} can use this command 😁")
     if bool(verified)==False:
         BUTTON = InlineKeyboardMarkup([[
