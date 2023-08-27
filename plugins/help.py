@@ -4,7 +4,28 @@ from pyrogram import filters
 from pyrogram.types import *
 from db import *
 
-HELP_TEXT = f"😇How To use  m\npress /buy to purchase a subscription\nIndex a group with - /index \nEXAMPLE: /index -100xxxxxxxxxxx Add me in the channel. And make sure I have all the permissions!\n\nRemove a Channel with - /remove -100xxxxxxxxxxx\nthis will help you to remove a indexed channel from your group. Get indexed channels list with - /viewlist \nCheck your information with - /info\nGives your information and validity of your subscription\nGet ID of current chat - /id \nAuto delete : use /autodel command to enable or disable auto message delete system."
+HELP_TEXT = f'''😇How To use Media Filter Bot 😇
+
+press /buy to purchase a subscription.
+
+Index a group with - /index 
+EXAMPLE: /index -100xxxxxxxxxxx
+Add me in the channel. And make sure I have all the permissions!
+
+
+Remove a Channel with - /remove -100xxxxxxxxxxx
+this will help you to remove a indexed channel from your group.
+
+
+Get indexed channels list with - /viewlist 
+
+Check your information with - /info
+Gives your information and validity of your subscription
+
+Get ID of current chat - /getid
+
+Autodel : use /autodel command to enable or disable
+              auto message delete system.'''
 
 
   

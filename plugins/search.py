@@ -53,7 +53,8 @@ async def search(bot, message):
           results = ""
         results += result_entry
   quri = query.split()
-  
+  max_unique_results = 8
+  unique_results = set()
   if not results:
     for choo in channels:
       for omki in quri:
@@ -61,10 +62,11 @@ async def search(bot, message):
           if msg.caption or msg.text:
             name = (msg.text or msg.caption).split("\n")[0]
             result_entry = f"{name}\n {msg.link}\n\n"
-            if len(result_entry) > MESSAGE_LENGTH:
-              await message.reply(f"{results}", disable_web_page_preview=True)
-              results = ""
-            results += result_entry              
+            if not result_entry in unique_results: 
+                  if len(unique_results) >= max_unique_results:
+                    break
+                  else: 
+                    results += result_entry
                     
   if results:
           end = time.time()
