@@ -6,7 +6,7 @@ from pyrogram.types import *
 
 
 
-@Client.on_message(filters.command("info") & filters.group)
+@Client.on_message(filters.command("info"))
 async def info_handle(_, m):
   chat_id = m.chat.id
   id = m.from_user.id 

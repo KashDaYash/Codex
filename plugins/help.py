@@ -21,7 +21,7 @@ Get indexed channels list with - /viewlist
 Check your information with - /info
 Gives your information and validity of your subscription
 
-Get ID of current chat - /getid
+Get ID of current chat - /id
 
 Autodel : use /autodel command to enable or disable
               auto message delete system.'''
