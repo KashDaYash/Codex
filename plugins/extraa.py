@@ -11,14 +11,20 @@ async def info_handle(_, m):
   chat_id = m.chat.id
   id = m.from_user.id
   name = m.from_user.mention
-  plan = ""
-  if m.chat.type == enums.ChatType.GROUP:
-    plan += await get_group(chat_id)
   if m.chat.type == enums.ChatType.PRIVATE:
-    await m.reply("You Are A Normal User\nIf You want to purchase use /buy")
+    data = await check_plan(id)
+    plan = data['plan']
+    if plan == "": 
+      BUTTON = InlineKeyboardMarkup([[
+            InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
+      await m.reply(text=f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
+    else:
+      await m.reply(f"Your Subscription Validity {plan}")
   else:
+    data = await get_group(chat_id)
+    plan = data['plan']
     if plan != "":
-      await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
+      await m.reply(f"Hey {name} This Chat Subscription Validity {plan}")
     else:
       BUTTON = InlineKeyboardMarkup([[
             InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])

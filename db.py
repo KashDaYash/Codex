@@ -43,7 +43,7 @@ async def check_plan(id):
     data = {"user_id": chat_id}
     group = await grp_col.find_one(data)
     return dict(group)
-    
+
     
 async def get_group(id):
     data = {'_id':id}
