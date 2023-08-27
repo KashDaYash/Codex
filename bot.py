@@ -21,28 +21,19 @@ LOGGER = logging.getLogger(__name__)
 # Initialize clients
 YaaraOP = Client(name="user", session_string=SESSION)
 dbot = Client("testbot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
-class Bot(Client):
-    def __init__(self):
-        super().__init__(
-            "bot",
+
+bot = Client("bot",
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
             plugins={"root": "plugins"})
-
-    async def start(self):
-        try:
-            await super().start()
-            await YaaraOP.start()
-            await YaaraOP.send_message("me","STARTED")# Start the User client
-            LOGGER.info("Bot Started ⚡")
-        except Exception as e:
-            LOGGER.exception("Error while starting bot: %s", str(e))
-
-    async def stop(self, *args):
-        try:
-            await super().stop()
-            await YaaraOP.stop()  # Stop the User client
-            LOGGER.info("Bot Stopped")
-        except Exception as e:
-            LOGGER.exception("Error while stopping bot: %s", str(e))
+async def main(): 
+  try:
+    await bot.start()
+    await YaaraOP.start()
+    await YaaraOP.send_message("me","STARTED")# Start the User client
+    LOGGER.info("Bot Started ⚡")
+  except Exception as e:
+    await bot.stop()
+    await YaaraOP.stop()
+    LOGGER.exception("Error while starting bot: %s", str(e))
