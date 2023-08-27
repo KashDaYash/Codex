@@ -1,4 +1,4 @@
-from bot import Bot
+from bot import Client
 from config import OWNER 
 from pyrogram import filters 
 

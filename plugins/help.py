@@ -1,4 +1,4 @@
-from bot import Bot
+from bot import Client
 from pyrogram import *
 from pyrogram.types import *
 
