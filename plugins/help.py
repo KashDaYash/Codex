@@ -25,7 +25,9 @@ Get ID of current chat - /getid
 
 Autodel : use /autodel command to enable or disable
               auto message delete system.'''
-
+@Client.on_message(filters.command("help"))
+async def help_handle(_, m):
+  await m.reply(HELP_TEXT)
 
 @Client.on_message(filters.command("buy")) 
 async def buy_handle(_ ,m):
