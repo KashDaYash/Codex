@@ -12,7 +12,7 @@ async def info_handle(_, m):
   id = m.from_user.id 
   dexa = await get_group(chat_id)
   plan = dexa["plan"]
-  if chat_id == id: 
+  if enums.ChatType.PRIVATE: 
     await m.reply("You Are A Normal User")
   name = m.from_user.mention
   if plan != "":
