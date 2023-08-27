@@ -1,7 +1,7 @@
 from config import * 
 from bot import Client
 from pyrogram import filters 
-from pyrogram.types import *
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery 
 from db import *
 
 HELP_TEXT = f'''😇How To use Media Filter Bot 😇
@@ -63,8 +63,6 @@ async def cb_help(_, q: CallbackQuery):
       await q.message.edit(text=PLAN_INR,reply_markup=BTN_2)
     elif data == "usd_p": 
       await q.message.edit(text=PLAN_USD,reply_markup=BTN_1)
-  else:
-    await q.answer("this query from another one")
 
 @Client.on_message(filters.command("id"))
 async def id_handle(_, m):
