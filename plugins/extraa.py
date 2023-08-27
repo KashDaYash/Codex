@@ -10,9 +10,16 @@ from pyrogram.types import *
 async def info_handle(_, m):
   chat_id = m.chat.id
   id = m.from_user.id
-  name = m.from_user.mention 
+  name = m.from_user.mention
+  plan = ""
+  if chat_id.startswith("-100"):
+    plan += await get_group(chat_id)
   if m.chat.type == enums.ChatType.PRIVATE:
-    await m.reply("You Are A Normal User")
+    if plan != "":
+      await m.reply(f"Your Subscription Validity {plan}")
+    else:
+      await m.reply("You Are A Normal User\If You want to purchase use /buy")
+    
   else:
     if plan != "":
       await m.reply(f"Hey {name} This Chat Plan Validity {plan}")
