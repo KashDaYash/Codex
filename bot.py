@@ -3,6 +3,7 @@ from datetime import datetime
 import asyncio
 from config import *
 from pyrogram import *
+from pyrogram.types import *
 
 ADMIN = 1791227679
 
