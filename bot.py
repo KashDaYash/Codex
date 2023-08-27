@@ -39,5 +39,5 @@ async def main():
     LOGGER.exception("Error while starting bot: %s", str(e))
 
 loop = asyncio.get_event_loop()
-loop.run_untile_complete(main())
+loop.run_forever(main())
 print("Bot Started 💥")
