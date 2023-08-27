@@ -14,12 +14,13 @@ async def info_handle(_, m):
   if m.chat.type == enums.ChatType.PRIVATE:
     data = await check_plan(id)
     plan = data['plan']
-    if plan == "": 
+    if plan != "":
+      await m.reply(f"Your Subscription Validity {plan}")
+    else: 
       BUTTON = InlineKeyboardMarkup([[
             InlineKeyboardButton("Buy A Plan", user_id=OWNER_ID)]])
       await m.reply(text=f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
-    else:
-      await m.reply(f"Your Subscription Validity {plan}")
+      
   else:
     data = await get_group(chat_id)
     plan = data['plan']

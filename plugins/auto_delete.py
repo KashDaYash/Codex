@@ -3,6 +3,7 @@ from db import *
 from config import *
 from pyrogram import *
 from pyrogram.types import *
+from pyrogram.errors import *
 
 
 @Client.on_message(filters.command("autodel") & filters.group)
@@ -29,7 +30,7 @@ async def auto_del_handler(_, m):
 @Client.on_callback_query()
 async def auto_del_cq(_, q):
   id = q.message.chat.id 
-  user = q.message.from_user.id
+  user = q.data.split(":",1)[1]
   uid = q.from_user.id
   data = q.data.split(":",1)[0]
   if uid == user:

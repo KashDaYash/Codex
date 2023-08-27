@@ -7,6 +7,7 @@ import time
 from datetime import datetime
 from pyrogram import *
 from pyrogram.types import *
+from pyrogram.errors import *
 
 
 async def check_up(bot):   
