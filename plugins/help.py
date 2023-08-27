@@ -1,8 +1,7 @@
-from config import * 
 from bot import Client
 from pyrogram import *
 from pyrogram.types import *
-from db import *
+
 
 HELP_TEXT = f'''😇How To use Media Filter Bot 😇
 
