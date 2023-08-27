@@ -1,7 +1,7 @@
 from bot import Bot
 from db import *
 from config import *
-from pyrogram import filters
+from pyrogram import filters, Client
 
 
 
