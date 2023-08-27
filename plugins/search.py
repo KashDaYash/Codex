@@ -1,7 +1,7 @@
 import asyncio
 from time import time
 from datetime import datetime, timedelta 
-from bot import Client, YaaraOP
+from bot import bot, YaaraOP
 from db import *
 from config import *
 from pyrogram import *
@@ -24,7 +24,7 @@ async def clean_query(query):
     return " ".join(cleaned_words)
 
 
-@Client.on_message(filters.text & filters.group & filters.incoming & ~filters.command(["auth", "index", "id"]))
+@bot.on_message(filters.text & filters.group & filters.incoming & ~filters.command(["auth", "index", "id"]))
 async def search(bot, message):
   chat_id = message.chat.id
   star = time.time()

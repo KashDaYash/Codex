@@ -1,4 +1,4 @@
-from bot import Client
+from bot import bot
 from config import OWNER 
 from pyrogram import filters 
 
@@ -9,7 +9,7 @@ Our selling channel :- @platimostore
 
 Want to make any kink of bot & tool dm @{OWNER}'''
 
-@Client.on_message(filters.command("about"))
+@bot.on_message(filters.command("about"))
 async def about_handle(_,m):
   chat_id = m.chat.id
   await m.reply(TEXT)

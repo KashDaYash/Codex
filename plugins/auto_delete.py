@@ -1,11 +1,11 @@
-from bot import Client
+from bot import bot
 from db import *
 from config import *
 from pyrogram import *
 from pyrogram.types import *
 
 
-@Client.on_message(filters.command("autodel") & filters.group)
+@bot.on_message(filters.command("autodel") & filters.group)
 async def auto_del_handler(_, m):
   chat_id = m.chat.id
   group = await get_group(chat_id)
@@ -26,7 +26,7 @@ async def auto_del_handler(_, m):
     elif auto_dele == True:
       await m.reply(f_text,reply_markup=F_BUTTON)
     
-@Client.on_callback_query()
+@bot.on_callback_query()
 async def auto_del_cq(_, q):
   id = q.message.chat.id 
   user = q.message.from_user.id
