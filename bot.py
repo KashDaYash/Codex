@@ -37,6 +37,7 @@ async def main():
     await bot.stop()
     await YaaraOP.stop()
     LOGGER.exception("Error while starting bot: %s", str(e))
-    
-asyncio.run(main())
+
+loop = asyncio.get_event_loop()
+loop.run_untile_complete(main())
 print("Bot Started 💥")
