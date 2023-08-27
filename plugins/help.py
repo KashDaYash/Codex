@@ -44,18 +44,18 @@ async def cb_help(_, q: CallbackQuery):
           
   PLAN_INR = "**These are the prices in INR:**\n\n`100 INR` - per Month\n`400 INR` -  per 6 Months\n`800 INR` -  per Year\n\nClick on the `Buy` button to contact the owner"
       
-  BTN_1 = InlineKeyboardMarkup([[
+  BTN_1 = [[
         InlineKeyboardButton(text="Buy",url=f"t.me/{OWNER}"),
         InlineKeyboardButton(text="INR PRICE",callback_data="inr_p")
-        ]])
-  BTN_2 = InlineKeyboardMarkup([[
+        ]]
+  BTN_2 = [[
         InlineKeyboardButton(text="Buy",url=f"t.me/{OWNER}"),
         InlineKeyboardButton(text="USD PRICE",callback_data="usd_p")
-        ]])
+        ]]
   if data =="inr_p": 
-    await q.message.edit(text=PLAN_INR,reply_markup=BTN_2)
+    await q.message.edit(text=PLAN_INR,reply_markup=InlineKeyboardMarkup(BTN_2))
   elif data == "usd_p": 
-    await q.message.edit(text=PLAN_USD,reply_markup=BTN_1)   
+    await q.message.edit(text=PLAN_USD,reply_markup=InlineKeyboardMarkup(BTN_1))
 
 @Client.on_message(filters.command("id"))
 async def id_handle(_, m):
