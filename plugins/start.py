@@ -20,7 +20,10 @@ Press /help for more info!
 Press /buy to purchase a subscription!
 
 your chat id = {id}'''
-  await m.reply(START_MSG)
+  if m.chat.type == enums.ChatType.PRIVATE:
+    await m.reply(START_MSG)
+  else:   
+    await m.reply(START_MSG)
   
   
   
