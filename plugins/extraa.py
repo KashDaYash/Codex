@@ -12,7 +12,7 @@ async def info_handle(_, m):
   id = m.from_user.id
   name = m.from_user.mention
   plan = ""
-  if chat_id.startswith("-100"):
+  if m.chat.type == enums.ChatType.GROUP:
     plan += await get_group(chat_id)
   if m.chat.type == enums.ChatType.PRIVATE:
     if plan != "":
