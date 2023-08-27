@@ -1,11 +1,11 @@
-from bot import yk as bot
+from bot import Bot
 from db import *
 from config import *
 from pyrogram import filters
 
 
 
-@bot.on_message(filters.command("start"))
+@Bot.on_message(filters.command("start"))
 async def start_handle(_, m):
   user = m.from_user
   id = m.chat.id

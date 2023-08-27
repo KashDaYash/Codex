@@ -1,6 +1,6 @@
 import asyncio
 from config import *
-from bot import yk as bot
+from bot import Bot
 from pyrogram import enums
 from pymongo.errors import DuplicateKeyError
 from pyrogram.errors import UserNotParticipant

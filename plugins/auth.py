@@ -1,4 +1,4 @@
-from bot import yk as bot
+from bot import Bot
 from db import *
 from config import *
 from pyrogram import *
@@ -9,7 +9,7 @@ MSG_TO = "This Is Auth Module"
 CHECKING = "Please Provide Me In Correct Format /check -chat id"
 
 
-@bot.on_message(filters.command("check") & filters.user([OWNER_ID]))
+@Bot.on_message(filters.command("check") & filters.user([OWNER_ID]))
 async def chat_id_check(bot, m):
   chat_id = m.chat.id
   if m.text == "/check":
@@ -20,7 +20,7 @@ async def chat_id_check(bot, m):
     uname = group.username 
     await m.reply("You Giving Me @" + uname + " Chat ID")
   
-@bot.on_message(filters.command("auth") & filters.private & filters.user(OWNER_ID))
+@Bot.on_message(filters.command("auth") & filters.private & filters.user(OWNER_ID))
 async def auth_handle(bot, m):
   if m.text == "/auth":
     await m.reply("Please Provide Group ID And Time Period like /auth Group ID Time ")

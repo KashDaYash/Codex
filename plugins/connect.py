@@ -1,10 +1,10 @@
-from bot import yk as bot, YaaraOP
+from bot import Bot, YaaraOP
 from db import *
 from config import *
 from pyrogram import *
 from pyrogram.types import *
 
-@bot.on_message(filters.group & filters.command("index"))
+@Bot.on_message(filters.group & filters.command("index"))
 async def connect(bot, message):
     m=await message.reply("Please wait..")
     user = await YaaraOP.get_me()
@@ -47,7 +47,7 @@ async def connect(bot, message):
     await bot.send_message(chat_id=LOG_CHANNEL, text=text)
 
 
-@bot.on_message(filters.group & filters.command("remove"))
+@Bot.on_message(filters.group & filters.command("remove"))
 async def disconnect(bot, message):
     m=await message.reply("Please wait..")   
     try:
@@ -86,7 +86,7 @@ async def disconnect(bot, message):
     await bot.send_message(chat_id=LOG_CHANNEL, text=text)
 
 
-@bot.on_message(filters.group & filters.command("viewlist"))
+@Bot.on_message(filters.group & filters.command("viewlist"))
 async def connections(bot, message):
     group     = await get_group(message.chat.id)    
     user_id   = group["user_id"]

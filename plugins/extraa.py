@@ -1,4 +1,4 @@
-from bot import yk as bot
+from bot import Bot
 from db import *
 from config import *
 from pyrogram import *
@@ -6,7 +6,7 @@ from pyrogram.types import *
 
 
 
-@bot.on_message(filters.command("info") & filters.group)
+@Bot.on_message(filters.command("info") & filters.group)
 async def info_handle(_, m):
   chat_id = m.chat.id
   id = m.from_user.id 
@@ -23,7 +23,7 @@ async def info_handle(_, m):
     await m.reply(text=f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
   
   
-@bot.on_message(filters.command('leave') & filters.private &  filters.chat(OWNER_ID))
+@Bot.on_message(filters.command('leave') & filters.private &  filters.chat(OWNER_ID))
 async def leave_a_chat(bot, message):
     if len(message.command) == 1:
         return await message.reply('Give me a chat id')
