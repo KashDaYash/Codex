@@ -11,7 +11,7 @@ Remaining: `{}`
 Success: `{}`
 Failed: `{}`"""
 
-@Bot.on_message(filters.command('broadcast') & filters.user(OWNER_ID))
+@Client.on_message(filters.command('broadcast') & filters.user(OWNER_ID))
 async def broadcast(bot, message):
     if not message.reply_to_message:
        return await message.reply("Use this command as a reply to any message!")
@@ -57,7 +57,7 @@ STATS = """My Status 💫
 👥 Users: {}
 🧿 Groups: {}"""
 
-@Bot.on_message(filters.command("stats") & filters.user(OWNER_ID))
+@Client.on_message(filters.command("stats") & filters.user(OWNER_ID))
 async def stats(bot, message):
     g_count, g_list = await get_groups()
     u_count, u_list = await get_users()

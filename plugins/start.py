@@ -5,7 +5,7 @@ from pyrogram import filters
 
 
 
-@Bot.on_message(filters.command("start"))
+@Client.on_message(filters.command("start"))
 async def start_handle(_, m):
   user = m.from_user
   id = m.chat.id

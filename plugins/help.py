@@ -27,7 +27,7 @@ Autodel : use /autodel command to enable or disable
               auto message delete system.'''
 
 
-@Bot.on_message(filters.command("buy")) 
+@Client.on_message(filters.command("buy")) 
 async def buy_handle(_ ,m):
   BUTTON = InlineKeyboardMarkup([[
         InlineKeyboardButton(text="USD $$",callback_data="usd_p"),
@@ -35,7 +35,7 @@ async def buy_handle(_ ,m):
         ]])
   await m.reply(text="All The Available Plans",reply_markup=BUTTON)
         
-@Bot.on_callback_query()
+@Client.on_callback_query()
 async def cb_help(_, q: CallbackQuery):
   data = q.data
   PLAN_USD = "These are the prices in USD:\n\n`1.5 USD` - per Month\n`5 USD` - per 6 Months\n8 USD` - per Year\n\nClick on the Buy button to contact the owner"
@@ -55,7 +55,7 @@ async def cb_help(_, q: CallbackQuery):
   elif data == "usd_p": 
     await q.message.edit(text=PLAN_USD,reply_markup=BTN_1)   
 
-@Bot.on_message(filters.command("id"))
+@Client.on_message(filters.command("id"))
 async def id_handle(_, m):
   chat_id = m.chat.id
   user = m.from_user

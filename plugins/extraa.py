@@ -6,7 +6,7 @@ from pyrogram.types import *
 
 
 
-@Bot.on_message(filters.command("info") & filters.group)
+@Client.on_message(filters.command("info") & filters.group)
 async def info_handle(_, m):
   chat_id = m.chat.id
   id = m.from_user.id 
@@ -23,7 +23,7 @@ async def info_handle(_, m):
     await m.reply(text=f"Hey {name} You Didn't Purchase Any Plan",reply_markup=BUTTON)
   
   
-@Bot.on_message(filters.command('leave') & filters.private &  filters.chat(OWNER_ID))
+@Client.on_message(filters.command('leave') & filters.private &  filters.chat(OWNER_ID))
 async def leave_a_chat(bot, message):
     if len(message.command) == 1:
         return await message.reply('Give me a chat id')

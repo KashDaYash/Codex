@@ -6,7 +6,7 @@ from bot import *
 from pyrogram.errors import *
 
 
-@Bot.on_message(filters.group & filters.new_chat_members)
+@Client.on_message(filters.group & filters.new_chat_members)
 async def new_group(bot, message):
     bot_id = (await bot.get_me()).id
     member = [u.id for u in message.new_chat_members]        

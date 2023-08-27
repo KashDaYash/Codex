@@ -24,7 +24,7 @@ async def clean_query(query):
     return " ".join(cleaned_words)
 
 
-@Bot.on_message(filters.text & filters.group & filters.incoming & ~filters.command(["auth", "index", "id"]))
+@Client.on_message(filters.text & filters.group & filters.incoming & ~filters.command(["auth", "index", "id"]))
 async def search(bot, message):
   chat_id = message.chat.id
   star = time.time()

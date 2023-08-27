@@ -9,7 +9,7 @@ Our selling channel :- @platimostore
 
 Want to make any kink of bot & tool dm @{OWNER}'''
 
-@Bot.on_message(filters.command("about"))
+@Client.on_message(filters.command("about"))
 async def about_handle(_,m):
   chat_id = m.chat.id
   await m.reply(TEXT)
