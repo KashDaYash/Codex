@@ -32,8 +32,8 @@ class Bot(Client):
 
 async def start(self):
   await super().start()
-  YaaraOP.start()
-  YaaraOP.send_message("me","STARTED")# Start the User client
+  await YaaraOP.start()
+  await YaaraOP.send_message("me","STARTED")# Start the User client
   LOGGER.info("Bot Started ⚡")
 
 async def stop(self): 
